@@ -7,5 +7,5 @@ urlpatterns = [
     path('restore-password/', RestorePasswordAPIView.as_view()),
     path('change-password/', ChangePasswordView.as_view()),
     path('profile/', ProfileView.as_view()),
-    path('users-list/', UserViewSet.as_view({'get': 'list'}))
+    path('users-list/', UserViewSet.as_view({'get': 'list'})),
 ]
