@@ -10,8 +10,12 @@ ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1']
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env("POSTGRES_DB"),
+        'PASSWORD': env("POSTGRES_PASSWORD"),
+        'USER': env("POSTGRES_USER"),
+        'HOST': env("POSTGRES_HOST"),
+        'PORT': '5432',
     }
 }
 

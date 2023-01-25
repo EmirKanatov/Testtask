@@ -1,9 +1,24 @@
-version: '3.8'
+version: "3.8"
 services:
   mangoread:
+    container_name: mangoread
     build: ./mangoread
     command: sh -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8080"
     volumes:
       - ./mangoread:/usr/src/app
     ports:
-      - 8080:8080
+      - "8080:8080"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:latest
+    container_name: db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - mangoread/.env
+
+
+volumes:
+  postgres_data:
